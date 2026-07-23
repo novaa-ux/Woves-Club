@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Clothing Brand</title>
+    <style>
+        /* CSS Reset & General Styling */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        :root { 
+            --primary-color: #222; 
+            --secondary-color: #fafafa; 
+            --whatsapp-green: #25D366; 
+            --whatsapp-hover: #128C7E;
+        } 
+        body { background-color: var(--secondary-color); color: var(--primary-color); }
+
+        /* Navigation Bar */
+        header { 
+            background-color: #fff; 
+            padding: 1.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .logo { font-size: 1.8rem; font-weight: 800; cursor: pointer; letter-spacing: 1px;}
+        nav ul { list-style: none; display: flex; gap: 2rem; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: color 0.3s ease; 
+        }
+        nav ul li a:hover { color: var(--whatsapp-hover); }
+
+        /* Store Sections Setup */
+        .page-section { display: none; padding: 4rem 5%; min-height: 80vh; }
+        .page-section.active { display: block; animation: fadeIn 0.5s ease; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page Styling */
+        .hero { 
+            text-align: center; 
+            padding: 8rem 1rem; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1200&q=80') center/cover; 
+            color: #fff; 
+            border-radius: 12px; 
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2.5rem; }
+        .btn-shop { 
+            padding: 1rem 2.5rem; 
+            background-color: #fff; 
+            color: var(--primary-color); 
+            border: none; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            transition: 0.3s; 
+        }
+        .btn-shop:hover { background-color: var(--whatsapp-green); color: #fff; }
+
+        /* Product Grid & Cards */
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;}
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        .product-card { 
+            background: #fff; 
+            padding: 1.5rem; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            text-align: center; 
+            transition: transform 0.3s ease; 
+        }
+        .product-card:hover { transform: translateY(-8px); }
+        .product-image { width: 100%; height: 320px; object-fit: contain; border-radius: 8px; margin-bottom: 1.5rem; }
+        .product-title { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .product-price { font-size: 1.2rem; color: #555; margin-bottom: 1.5rem; font-weight: bold;}
+        
+        /* WhatsApp Button */
+        .btn-whatsapp { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            background-color: var(--whatsapp-green); 
+            color: #fff; 
+            padding: 1rem; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 1.1rem;
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+            width: 100%; 
+        }
+        .btn-whatsapp:hover { background-color: var(--whatsapp-hover); }
+
+        /* Footer */
+        footer { background-color: #fff; text-align: center; padding: 2rem; border-top: 1px solid #eaeaea; }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo" onclick="showSection('home')">WOLVES CLUB</div>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('shirts')">Shirts</a></li>
+                <li><a onclick="showSection('pants')">Pants</a></li>
+                 <li><a onclick="showSection('suits')">Suits</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECTION 1: Home Page -->
+    <main id="home" class="page-section active">
+        <div class="hero">
+            <h1>Elevate Your Wardrobe</h1>
+            <p>Premium quality shirts and pants for the modern lifestyle.</p>
+            <button class="btn-shop" onclick="showSection('shirts')">Shop The Collection</button>
+        </div>
+    </main>
+
+    <!-- SECTION 2: Shirts -->
+    <main id="shirts" class="page-section">
+        <h2 class="section-title">Premium Shirts</h2>
+        <div class="product-grid">
+            
+            <!-- Shirt 1 -->
+            <div class="product-card">
+                <img src="images/199x-white.jpg.jpg" alt="199x white" class="product-image">
+                <h3 class="product-title">199x white</h3>
+                <p class="product-price">300 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp('199x white', '300 EGP')">
+                    Buy on WhatsApp
+                </button>
+            </div>
+            
+            <!-- Shirt 2 -->
+            <div class="product-card">
+               <img src="images/jersy-black.jpg.jpg" alt="Back Slact" class="product-image">
+                <h3 class="product-title">Black Slact</h3>
+                <p class="product-price">350 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp('Black Slact', '350 EGP')">
+                    Buy on WhatsApp
+                </button>
+            </div>
+            
+            <!-- Shirt 3 -->
+            <div class="product-card">
+                <img src="images/blcak-shirt.jpg.jpg" alt="Black Shirt" class="product-image">
+               <h3 class="product-title"> Black Shirt</h3>
+                <p class="product-price">300 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp(' Black Shirt', '$300 EGP')">
+                 Buy on WhatsApp
+                </button>
+            </div>
+
+            <!-- Shirt 4 -->
+            <div class="product-card">
+                <img src="images/brown-shirt.jpg.jpg" alt="Brown Shirt" class="product-image">
+                <h3 class="product-title"> Brown Shirt</h3>
+                <p class="product-price">300 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp(' Brown Shirt', '$300 EGP')">
+                    Buy on WhatsApp
+                </button>
+            </div>
+
+
+
+             <!-- Shirt 5 -->
+            <div class="product-card">
+                <img src="images/white-shirt.jpg.jpg" alt="White Shirt" class="product-image">
+                <h3 class="product-title"> White Shirt</h3>
+                <p class="product-price">300 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp('White Shirt', '$300 EGP')">
+                    Buy on WhatsApp
+                </button>
+            </div>
+
+
+        </div>
+    </main>
+
+    <!-- SECTION 3: Pants -->
+    <main id="pants" class="page-section">
+        <h2 class="section-title">Essential Pants</h2>
+        <div class="product-grid">
+            
+            <!-- Pant 1 -->
+            <div class="product-card">
+                  <img src="images/wide-leg-pants-jpg.jpg" alt="Wide Leg Pants" class="product-image">
+                <h3 class="product-title">Wide Leg Pants</h3>
+                <p class="product-price">500 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp('Wide Leg Pants', '500 EGP')">
+                    Buy on WhatsApp
+                </button>
+            </div>
+            
+            <!-- Pant 2 -->
+            <div class="product-card">
+                 <img src="images/white-wide-leg-pants-jpg.jpg" alt="White Wide Leg Pants" class="product-image">
+                <h3 class="product-title">White Wide Leg Pants</h3>
+                <p class="product-price">500 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp('White Wide Leg Pants', '500 EGP')">
+                    Buy on WhatsApp
+                </button>
+            </div>
+            
+            <!-- Pant 3 -->
+            <div class="product-card">
+               <img src="images/BROWN-wide-leg-pants.avif" alt="Brown Wide Leg Pants" class="product-image">
+                <h3 class="product-title">Brown Wide Leg Pants</h3>
+                <p class="product-price">500 EGP</p>
+                <button class="btn-whatsapp" onclick="buyViaWhatsApp('Brown Wide Leg Pants', '500 EGP')">
+                    Buy on WhatsApp
+                </button>
+            </div>
+             </main>
+             </main>
+
+<!-- SECTION 4: Suits -->
+<main id="suits" class="page-section">
+    <h2 class="section-title">Premium Suits</h2>
+
+    <div class="product-grid">
+<div class="product-card">
+    <img src="images/black-suit.jpg.jpg" alt="Black Suit" class="product-image">
+    <h3 class="product-title">Black Suit</h3>
+    <p class="product-price">600 EGP</p>
+    <button class="btn-whatsapp"
+        onclick="buyViaWhatsApp('Black Suit', '600 EGP')">
+        Buy on WhatsApp
+    </button>
+
+    <div class="product-card">
+    <img src="images/white-suit.jpg.jpg" alt="White Suit" class="product-image">
+    <h3 class="product-title">White Suit</h3>
+    <p class="product-price">600 EGP</p>
+    <button class="btn-whatsapp"
+        onclick="buyViaWhatsApp('White Suit', '600 EGP')">
+        Buy on WhatsApp
+    </button>
+</div>
+
+    </div>
+</main>
+
+            
+        </div>
+        <section id="suits" class="page-section">
+    <h2 class="section-title">Premium Suits</h2>
+    
+
+    <div class="product-grid">
+
+    </div>
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 NOVAdesing. All rights reserved.</p>
+    </footer>
+
+    <!-- Store Logic & WhatsApp Integration -->
+    <script>
+        // --- IMPORTANT: CHANGE THIS NUMBER ---
+        // Add your country code without the "+" or "00". 
+        // Example: For US (1) and number 555-1234, write "15551234"
+        const storeWhatsAppNumber = "+201125375527"; 
+
+        // Function to switch between Home, Shirts, and Pants smoothly
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Function to send user to WhatsApp with a pre-filled order message
+        function buyViaWhatsApp(itemName, itemPrice) {
+            const message = `Hello! I would like to order the ${itemName} for ${itemPrice}. Is it currently in stock?`;
+            
+            // Encode the text so it works in a web URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Generate the WhatsApp API Link
+            const whatsappUrl = `https://wa.me/${storeWhatsAppNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in a new browser tab
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
